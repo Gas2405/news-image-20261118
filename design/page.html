@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The World in One Day — Wednesday 18 November 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1024px; height: 1024px; overflow: hidden; }
+  body {
+    background: #f7f2e7;
+    color: #16130d;
+    font-family: "Liberation Sans", Arial, sans-serif;
+    padding: 30px 38px 24px 38px;
+    display: flex; flex-direction: column;
+  }
+  .serif { font-family: "Liberation Serif", Georgia, serif; }
+
+  /* ---------- masthead ---------- */
+  .topline {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 14.5px; letter-spacing: 2.5px; font-weight: bold; color: #6b6151;
+    border-bottom: 3px solid #16130d; padding-bottom: 7px;
+  }
+  .papername {
+    text-align: center; font-size: 43px; font-weight: bold; letter-spacing: 6px;
+    padding-top: 10px;
+  }
+  .dateline {
+    text-align: center; font-size: 57px; font-weight: bold; letter-spacing: 1px;
+    color: #a31621; padding: 2px 0 8px 0; white-space: nowrap;
+  }
+  .daterule { border-top: 6px solid #16130d; border-bottom: 1.5px solid #16130d; height: 4px; margin-bottom: 16px; }
+
+  /* ---------- shared story bits ---------- */
+  .kicker { font-size: 14.5px; font-weight: bold; letter-spacing: 2.2px; color: #a31621; }
+  .caption { color: #33302a; line-height: 1.32; }
+
+  /* ---------- lead ---------- */
+  .lead { display: flex; gap: 26px; }
+  .lead .txt { flex: 1; }
+  .lead h1 { font-size: 47px; line-height: 1.08; font-weight: bold; padding: 6px 0 10px 0; }
+  .lead .caption { font-size: 20.5px; }
+  .lead .deck { font-size: 18.5px; font-style: italic; color: #57503f; line-height: 1.35; padding-top: 12px; }
+  .lead .art { width: 352px; flex: none; }
+
+  .rule { border-top: 2px solid #16130d; margin: 16px 0 14px 0; }
+
+  /* ---------- grid ---------- */
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px; }
+  .tile { display: flex; gap: 16px; padding: 13px 0 13px 0; border-top: 1.5px solid #b9b09c; }
+  .tile .art { width: 104px; flex: none; }
+  .tile h2 { font-size: 27.5px; line-height: 1.13; font-weight: bold; padding: 3px 0 5px 0; }
+  .tile .caption { font-size: 17.5px; }
+
+  /* ---------- bottom ---------- */
+  .bottom { display: flex; gap: 16px; align-items: center; border-top: 2px solid #16130d; padding-top: 13px; margin-top: 2px; }
+  .bottom .art { width: 76px; flex: none; }
+  .bottom h2 { font-size: 27.5px; font-weight: bold; padding: 2px 0 4px 0; }
+  .bottom .caption { font-size: 17.5px; }
+
+  .markets {
+    margin-top: 13px; background: #16130d; color: #f7f2e7;
+    font-size: 17px; letter-spacing: 0.6px; padding: 8px 14px; white-space: nowrap; overflow: hidden;
+  }
+  .markets b { color: #e8b64c; letter-spacing: 1.6px; }
+  .sources { margin-top: 9px; text-align: center; font-size: 13.5px; color: #6b6151; letter-spacing: 0.4px; }
+</style>
+</head>
+<body>
+
+  <div class="topline"><span>MAKE.FUN · DAILY NEWS IMAGE</span><span>THE DAY'S NEWS, ON ONE PAGE</span></div>
+  <div class="papername serif">THE WORLD IN ONE DAY</div>
+  <div class="dateline serif" id="dateline"></div>
+  <div class="daterule"></div>
+
+  <section class="lead" id="lead"></section>
+  <div class="rule"></div>
+  <section class="grid" id="grid"></section>
+  <section class="bottom" id="bottom"></section>
+  <div class="markets" id="markets"></div>
+  <div class="sources" id="sources"></div>
+
+<script>
+/* =====================================================================
+   THE DAY'S STORIES — the single place the news lives.
+   To refresh the page for a later edition, edit only this block:
+   every headline (max ~8 words) and caption (max ~12 words) is drawn
+   from here, each as reported on the day by the outlets listed below.
+   ===================================================================== */
+const DAY = "WEDNESDAY · 18 NOVEMBER 2026";
+
+const LEAD = {
+  kicker: "THE GULF · MIDDLE EAST",
+  headline: "Iran Drones Hit Gulf as US Strikes Qeshm",
+  caption: "Bahrain and Kuwait repel drones after US jets bomb a missile site on Qeshm Island.",
+  deck: "A third US carrier group has entered the region as the nine-month war flares again.",
+  art: "hormuz"
+};
+
+const STORIES = [
+  {
+    kicker: "SHENZHEN · DIPLOMACY",
+    headline: "Xi Hosts Putin as APEC Opens",
+    caption: "Trump meets Quad leaders in Manila; first US–China–Russia summit set for Thursday.",
+    art: "summit"
+  },
+  {
+    kicker: "UKRAINE WAR · EUROPE",
+    headline: "Ukraine Drops Kerch Bridge Arch Into Strait",
+    caption: "Drones and missiles sever Russia's road link to Crimea; Moscow vows repairs.",
+    art: "bridge"
+  },
+  {
+    kicker: "BUSINESS · TECHNOLOGY",
+    headline: "Nvidia Beats Forecasts in First Post-Huang Earnings",
+    caption: "Interim chief Kress steadies investors; the board rules out Huang's return.",
+    art: "chip"
+  },
+  {
+    kicker: "AFRICA · HEALTH",
+    headline: "Ebola in Congo Tops 11,000 Cases",
+    caption: "WHO: the outbreak doubled in three months, 5,400 dead; children hardest hit.",
+    art: "virus"
+  }
+];
+
+const BOTTOM = {
+  kicker: "UNITED STATES · HEALTH",
+  headline: "US Loses Measles-Free Status After 26 Years",
+  caption: "PAHO ruling follows 5,412 cases in 2026, the most since 1991.",
+  art: "shield"
+};
+
+const MARKETS = "<b>MARKETS</b>&nbsp;&nbsp;S&amp;P 500 −1.03%&nbsp;&nbsp;·&nbsp;&nbsp;DAX −2.08%&nbsp;&nbsp;·&nbsp;&nbsp;FTSE 100 −1.76%&nbsp;&nbsp;·&nbsp;&nbsp;GOLD $3,775 −2.31%&nbsp;&nbsp;·&nbsp;&nbsp;BRENT $91.55";
+const SOURCES = "As reported by Reuters · CNN · AP · Al Jazeera · AFP · UN News · WHO — drawn and typeset for make.fun";
+
+/* ---------------- small drawn pictures (inline SVG) ---------------- */
+const ART = {
+  hormuz: `<svg width="352" height="252" viewBox="0 0 352 252">
+    <rect width="352" height="252" fill="#16324f"/>
+    <path d="M0,0 H352 V58 C300,84 236,66 178,80 C120,94 60,80 0,96 Z" fill="#c9a86a"/>
+    <path d="M0,252 V196 C70,178 140,200 210,186 C270,175 315,190 352,178 V252 Z" fill="#c9a86a"/>
+    <ellipse cx="196" cy="128" rx="46" ry="17" fill="#a31621"/>
+    <text x="204" y="133" text-anchor="middle" font-family="Liberation Sans" font-size="13" font-weight="bold" fill="#fff">QESHM</text>
+    <text x="16" y="30" font-family="Liberation Sans" font-size="14" font-weight="bold" fill="#3a2c12">IRAN</text>
+    <text x="252" y="240" font-family="Liberation Sans" font-size="14" font-weight="bold" fill="#3a2c12">ARABIA</text>
+    <text x="30" y="168" font-family="Liberation Sans" font-size="12.5" font-weight="bold" fill="#dce8f2">BAHRAIN</text>
+    <text x="86" y="206" font-family="Liberation Sans" font-size="12.5" font-weight="bold" fill="#dce8f2">KUWAIT</text>
+    <path d="M232,104 l16,-7 l-4,9 l4,9 Z" fill="#e8b64c"/>
+    <path d="M262,88 l16,-7 l-4,9 l4,9 Z" fill="#e8b64c"/>
+    <path d="M120,150 l16,-7 l-4,9 l4,9 Z" fill="#e8b64c"/>
+    <path d="M236,110 C200,128 150,138 96,150" stroke="#e8b64c" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
+    <path d="M266,94 C220,110 180,118 150,124" stroke="#e8b64c" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
+    <path d="M138,110 l3,8 l8,-5 l-5,8 l9,2 l-9,3 l6,7 l-9,-3 l-1,9 l-3,-8 l-8,5 l5,-8 l-9,-2 l9,-3 l-6,-7 l9,3 Z" fill="#ffcf4d"/>
+    <text x="188" y="98" text-anchor="middle" font-family="Liberation Sans" font-size="12" fill="#dce8f2">STRAIT OF HORMUZ</text>
+  </svg>`,
+  summit: `<svg width="104" height="104" viewBox="0 0 104 104">
+    <rect width="104" height="104" fill="#16324f"/>
+    <circle cx="76" cy="26" r="12" fill="#e8b64c"/>
+    <path d="M6,104 V62 h12 v42 Z M22,104 V48 h14 v56 Z M40,104 V70 h10 v34 Z M54,104 V40 h16 v64 Z M74,104 V58 h12 v46 Z M88,104 V66 h10 v38 Z" fill="#0d1f31"/>
+    <path d="M28,30 l2.2,4.6 5,.7 -3.6,3.5 .9,5 -4.5,-2.4 -4.5,2.4 .9,-5 -3.6,-3.5 5,-.7 Z" fill="#e8b64c"/>
+    <path d="M50,22 l1.8,3.7 4.1,.6 -3,2.9 .7,4.1 -3.7,-1.9 -3.7,1.9 .7,-4.1 -3,-2.9 4.1,-.6 Z" fill="#e8b64c"/>
+    <path d="M14,44 l1.6,3.3 3.7,.5 -2.7,2.6 .6,3.7 -3.3,-1.7 -3.3,1.7 .6,-3.7 -2.7,-2.6 3.7,-.5 Z" fill="#e8b64c"/>
+  </svg>`,
+  bridge: `<svg width="104" height="104" viewBox="0 0 104 104">
+    <rect width="104" height="104" fill="#dce8f2"/>
+    <path d="M0,44 H38 M66,44 H104" stroke="#16130d" stroke-width="5"/>
+    <path d="M38,44 L64,58" stroke="#a31621" stroke-width="5"/>
+    <path d="M10,44 V26 M94,44 V26 M10,26 H94" stroke="#16130d" stroke-width="2.5" fill="none"/>
+    <path d="M40,66 q6,-6 12,0 q6,6 12,0 q6,-6 12,0 q6,6 12,0" stroke="#16324f" stroke-width="3" fill="none"/>
+    <path d="M8,78 q6,-6 12,0 q6,6 12,0 q6,-6 12,0 q6,6 12,0 q6,-6 12,0 q6,6 12,0" stroke="#16324f" stroke-width="3" fill="none"/>
+    <path d="M52,30 l2.4,5.4 5.9,.7 -4.4,4 1.2,5.8 -5.1,-2.9 -5.1,2.9 1.2,-5.8 -4.4,-4 5.9,-.7 Z" fill="#a31621"/>
+  </svg>`,
+  chip: `<svg width="104" height="104" viewBox="0 0 104 104">
+    <rect width="104" height="104" fill="#e9e4d4"/>
+    <g stroke="#16130d" stroke-width="4">
+      <path d="M30,14 v10 M46,14 v10 M62,14 v10 M78,14 v10 M30,80 v10 M46,80 v10 M62,80 v10 M78,80 v10 M14,30 h10 M14,46 h10 M14,62 h10 M14,78 h10 M80,30 h10 M80,46 h10 M80,62 h10 M80,78 h10"/>
+    </g>
+    <rect x="26" y="26" width="52" height="52" fill="#16324f"/>
+    <path d="M34,66 L46,54 L54,60 L70,42" stroke="#7dd87d" stroke-width="4.5" fill="none"/>
+    <path d="M61,40 h10 v10" stroke="#7dd87d" stroke-width="4.5" fill="none"/>
+  </svg>`,
+  virus: `<svg width="104" height="104" viewBox="0 0 104 104">
+    <rect width="104" height="104" fill="#f3e3e0"/>
+    <g stroke="#a31621" stroke-width="5" stroke-linecap="round">
+      <path d="M52,14 v12 M52,78 v12 M14,52 h12 M78,52 h12 M25,25 l9,9 M70,70 l9,9 M79,25 l-9,9 M34,70 l-9,9"/>
+    </g>
+    <circle cx="52" cy="52" r="19" fill="#a31621"/>
+    <g fill="#f3e3e0"><circle cx="52" cy="14" r="5"/><circle cx="52" cy="90" r="5"/><circle cx="14" cy="52" r="5"/><circle cx="90" cy="52" r="5"/><circle cx="25" cy="25" r="5"/><circle cx="79" cy="79" r="5"/><circle cx="79" cy="25" r="5"/><circle cx="25" cy="79" r="5"/></g>
+    <g fill="#f3e3e0"><circle cx="46" cy="47" r="3.4"/><circle cx="59" cy="55" r="3.4"/><circle cx="51" cy="61" r="2.8"/></g>
+  </svg>`,
+  shield: `<svg width="76" height="92" viewBox="0 0 76 92">
+    <path d="M38,4 L68,14 V44 C68,66 56,80 38,88 C20,80 8,66 8,44 V14 Z" fill="#16324f"/>
+    <path d="M38,12 L34,30 L42,42 L33,54 L39,70" stroke="#e8b64c" stroke-width="3.5" fill="none"/>
+    <g fill="#f7f2e7"><circle cx="24" cy="30" r="2.6"/><circle cx="52" cy="26" r="2.6"/><circle cx="28" cy="58" r="2.6"/><circle cx="54" cy="52" r="2.6"/><circle cx="44" cy="72" r="2.2"/></g>
+  </svg>`
+};
+
+/* ---------------- render ---------------- */
+document.getElementById("dateline").textContent = DAY;
+
+document.getElementById("lead").innerHTML = `
+  <div class="txt">
+    <div class="kicker">${LEAD.kicker}</div>
+    <h1 class="serif">${LEAD.headline}</h1>
+    <p class="caption">${LEAD.caption}</p>
+    <p class="deck serif">${LEAD.deck}</p>
+  </div>
+  <div class="art">${ART[LEAD.art]}</div>`;
+
+document.getElementById("grid").innerHTML = STORIES.map(s => `
+  <article class="tile">
+    <div class="art">${ART[s.art]}</div>
+    <div>
+      <div class="kicker">${s.kicker}</div>
+      <h2 class="serif">${s.headline}</h2>
+      <p class="caption">${s.caption}</p>
+    </div>
+  </article>`).join("");
+
+document.getElementById("bottom").innerHTML = `
+  <div class="art">${ART[BOTTOM.art]}</div>
+  <div>
+    <div class="kicker">${BOTTOM.kicker}</div>
+    <h2 class="serif">${BOTTOM.headline}</h2>
+    <p class="caption">${BOTTOM.caption}</p>
+  </div>`;
+
+document.getElementById("markets").innerHTML = MARKETS;
+document.getElementById("sources").textContent = SOURCES;
+</script>
+</body>
+</html>
