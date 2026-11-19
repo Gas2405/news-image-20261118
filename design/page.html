@@ -60,7 +60,7 @@
 
   .markets {
     margin-top: 13px; background: #16130d; color: #f7f2e7;
-    font-size: 17px; letter-spacing: 0.6px; padding: 8px 14px; white-space: nowrap; overflow: hidden;
+    font-size: 15px; letter-spacing: 0.4px; padding: 8px 12px; white-space: nowrap; overflow: hidden;
   }
   .markets b { color: #e8b64c; letter-spacing: 1.6px; }
   .sources { margin-top: 9px; text-align: center; font-size: 13.5px; color: #6b6151; letter-spacing: 0.4px; }
@@ -92,8 +92,8 @@ const DAY = "WEDNESDAY · 18 NOVEMBER 2026";
 const LEAD = {
   kicker: "THE GULF · MIDDLE EAST",
   headline: "Iran Drones Hit Gulf as US Strikes Qeshm",
-  caption: "Bahrain and Kuwait repel drones after US jets bomb a missile site on Qeshm Island.",
-  deck: "A third US carrier group has entered the region as the nine-month war flares again.",
+  caption: "Iran fires on Kuwait and Bahrain after US jets bomb a missile site on Qeshm Island.",
+  deck: "A third US carrier group is in the region as tankers are hit near Hormuz.",
   art: "hormuz"
 };
 
@@ -107,20 +107,20 @@ const STORIES = [
   {
     kicker: "UKRAINE WAR · EUROPE",
     headline: "Ukraine Drops Kerch Bridge Arch Into Strait",
-    caption: "Drones and missiles sever Russia's road link to Crimea; Moscow vows repairs.",
+    caption: "Second day of strikes severs Russia's road link to Crimea; Moscow vows repairs.",
     art: "bridge"
   },
   {
     kicker: "BUSINESS · TECHNOLOGY",
     headline: "Nvidia Beats Forecasts in First Post-Huang Earnings",
-    caption: "Interim chief Kress steadies investors; the board rules out Huang's return.",
+    caption: "Revenue doubles to $115.8B, guiding $130B; board rules out Huang's return.",
     art: "chip"
   },
   {
-    kicker: "AFRICA · HEALTH",
-    headline: "Ebola in Congo Tops 11,000 Cases",
-    caption: "WHO: the outbreak doubled in three months, 5,400 dead; children hardest hit.",
-    art: "virus"
+    kicker: "UNITED STATES · POLITICS",
+    headline: "Peltola Flips Alaska; Senate Now 56–44",
+    caption: "Final midterm race called; first Alaska Native wins a Senate seat.",
+    art: "capitol"
   }
 ];
 
@@ -131,7 +131,7 @@ const BOTTOM = {
   art: "shield"
 };
 
-const MARKETS = "<b>MARKETS</b>&nbsp;&nbsp;S&amp;P 500 −1.03%&nbsp;&nbsp;·&nbsp;&nbsp;DAX −2.08%&nbsp;&nbsp;·&nbsp;&nbsp;FTSE 100 −1.76%&nbsp;&nbsp;·&nbsp;&nbsp;GOLD $3,775 −2.31%&nbsp;&nbsp;·&nbsp;&nbsp;BRENT $91.55";
+const MARKETS = "<b>MARKETS</b>&nbsp;&nbsp;S&amp;P 500 −0.23%&nbsp;&nbsp;·&nbsp;&nbsp;DAX −1.19%&nbsp;&nbsp;·&nbsp;&nbsp;FTSE 100 −1.30%&nbsp;&nbsp;·&nbsp;&nbsp;GOLD $3,742 −3.16%&nbsp;&nbsp;·&nbsp;&nbsp;BRENT $91.95 −1.28%";
 const SOURCES = "As reported by Reuters · CNN · AP · Al Jazeera · AFP · UN News · WHO — drawn and typeset for make.fun";
 
 /* ---------------- small drawn pictures (inline SVG) ---------------- */
@@ -193,6 +193,23 @@ const ART = {
     <path d="M38,4 L68,14 V44 C68,66 56,80 38,88 C20,80 8,66 8,44 V14 Z" fill="#16324f"/>
     <path d="M38,12 L34,30 L42,42 L33,54 L39,70" stroke="#e8b64c" stroke-width="3.5" fill="none"/>
     <g fill="#f7f2e7"><circle cx="24" cy="30" r="2.6"/><circle cx="52" cy="26" r="2.6"/><circle cx="28" cy="58" r="2.6"/><circle cx="54" cy="52" r="2.6"/><circle cx="44" cy="72" r="2.2"/></g>
+  </svg>`,
+  capitol: `<svg width="104" height="104" viewBox="0 0 104 104">
+    <rect width="104" height="104" fill="#16324f"/>
+    <circle cx="52" cy="6" r="2.6" fill="#e8b64c"/>
+    <rect x="50" y="7" width="4" height="9" fill="#f7f2e7"/>
+    <path d="M52,14 C38,22 32,34 32,48 L72,48 C72,34 66,22 52,14 Z" fill="#f7f2e7"/>
+    <rect x="26" y="48" width="52" height="8" fill="#f7f2e7"/>
+    <rect x="22" y="56" width="60" height="6" fill="#c9a86a"/>
+    <g fill="#f7f2e7">
+      <rect x="24" y="62" width="6" height="26"/>
+      <rect x="36" y="62" width="6" height="26"/>
+      <rect x="49" y="62" width="6" height="26"/>
+      <rect x="62" y="62" width="6" height="26"/>
+      <rect x="74" y="62" width="6" height="26"/>
+    </g>
+    <rect x="18" y="88" width="68" height="6" fill="#f7f2e7"/>
+    <rect x="14" y="94" width="76" height="5" fill="#c9a86a"/>
   </svg>`
 };
 

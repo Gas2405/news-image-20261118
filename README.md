@@ -15,17 +15,19 @@ The date runs across the masthead; below it, the day's six most
 consequential stories, each with a small hand-drawn picture and a caption
 of a dozen words:
 
-- **The Gulf (lead):** Bahrain and Kuwait repel Iranian drones after US
-  jets bomb a missile site on Qeshm Island, in the Strait of Hormuz.
+- **The Gulf (lead):** Iran fires on Kuwait and Bahrain after US jets
+  bomb a missile site on Qeshm Island; a third US carrier group is in
+  the region as tankers are hit near Hormuz.
 - **Shenzhen:** Xi Jinping hosts Vladimir Putin as APEC opens; Donald
   Trump meets Quad leaders in Manila, with the first US–China–Russia
   summit set for Thursday.
-- **Ukraine war:** Ukrainian drones and missiles drop the Kerch Bridge's
+- **Ukraine war:** a second day of strikes drops the Kerch Bridge's
   road arch into the strait, severing Russia's road link to Crimea.
 - **Business:** Nvidia beats forecasts in its first earnings since Jensen
-  Huang's ouster; the board rules out his return.
-- **Africa:** DR Congo's Ebola outbreak tops 11,000 cases and 5,400
-  deaths, doubling in three months (WHO).
+  Huang's resignation — revenue doubles to $115.8B, guiding $130B — and
+  the board rules out his return.
+- **United States:** Mary Peltola flips Alaska, giving Democrats a 56–44
+  Senate majority; she is the first Alaska Native to win a Senate seat.
 - **United States:** the US loses its measles-elimination status after
   26 years, after 5,412 cases in 2026 — the most since 1991 (PAHO).
 
